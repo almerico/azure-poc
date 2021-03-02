@@ -1,0 +1,58 @@
+---
+devops:
+  location: East US
+  environment: alfresco-dev
+  resource_group: OIT-DEV-ALFR
+  create_resource_group: false
+
+  service_principal:
+    create: true # set true, if service principal should be created by terraform
+    name:
+    key_vault_pass: # optional, can be ommited, used for the existing sp, create is false
+      kv_name: dummy
+      kv_resource_group: dummy
+      kv_secret_name: dummy
+
+  vault:
+    create: true
+    name: alfrescodevvault
+    enabled_for_deployment: true
+    enabled_for_disk_encryption: true
+    enabled_for_template_deployment: true
+    admin_groups: [] # add list of admin groups if needed
+    key-permissions:
+      [create, decrypt, delete, encrypt, get, import, list, purge, update]
+    secret-permissions: [backup, delete, get, list, purge, set]
+    certificate-permissions:
+      [
+        create,
+        delete,
+        deleteissuers,
+        get,
+        getissuers,
+        import,
+        list,
+        listissuers,
+        purge,
+        setissuers,
+        update,
+      ]
+    storage-permissions:
+      [
+        delete,
+        deletesas,
+        get,
+        getsas,
+        list,
+        listsas,
+        purge,
+        regeneratekey,
+        set,
+        setsas,
+        update,
+      ]
+
+  registry:
+    create: true
+    name: alfrescodevregistry
+    admin_enabled: false

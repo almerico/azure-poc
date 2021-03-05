@@ -1,17 +1,11 @@
-output "tf_state_resource_group_name" {
-  value = data.azurerm_storage_account.account.resource_group_name
+output "storage_account_resource_group" {
+  value = local.storage_account_rg
 }
 
-output "tf_state_storage_account_name" {
-  value = data.azurerm_storage_account.account.name
+output "storage_account_name" {
+  value = local.storage_account
 }
 
-output "tf_state_storage_container_name" {
+output "storage_container_core_name" {
   value = azurerm_storage_container.core-container.name
 }
-
-output "tf_state_storage_account" {
-  value = data.azurerm_storage_account.account
-}
-
-
